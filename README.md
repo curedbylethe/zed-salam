@@ -34,14 +34,6 @@ rename and formatting.
 Zed compiles the vendored grammar and the Rust extension on install. If something
 fails, run `zed --foreground` and check `zed: open log`.
 
-## Publishing to the Zed extension registry
-
-1. Push this repository to GitHub, keeping the commit history (the pinned grammar
-   `rev` must exist upstream).
-2. Follow <https://zed.dev/docs/extensions/developing-extensions> and open a PR
-   against [`zed-industries/extensions`](https://github.com/zed-industries/extensions)
-   adding this repository as a submodule plus an entry in `extensions.toml`.
-
 ## Layout
 
 ```
