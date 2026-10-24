@@ -71,6 +71,7 @@ module.exports = grammar({
     [$.binary_expression, $.unary_expression, $.call_expression],
     [$.meta],
     [$._expression, $.dotted_name],
+    [$.type_alias],
   ],
 
   rules: {
@@ -351,17 +352,18 @@ module.exports = grammar({
         kw("end"),
       ),
 
+    // A type may own methods: type X: T, then func definitions, then end.
+    // The body is an unresolved conflict, so a plain alias followed by a
+    // top-level function stays two declarations; the error-free parse wins.
     type_alias: ($) =>
-      prec.right(
-        seq(
-          repeat($.modifier),
-          kw("type"),
-          field("name", $.name),
-          choice("=", ":"),
-          field("type", $._type),
-          optional(
-            seq(repeat1(choice($.function_definition, $.meta)), kw("end")),
-          ),
+      seq(
+        repeat($.modifier),
+        kw("type"),
+        field("name", $.name),
+        choice("=", ":"),
+        field("type", $._type),
+        optional(
+          seq(repeat1(choice($.function_definition, $.meta)), kw("end")),
         ),
       ),
 
