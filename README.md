@@ -50,6 +50,7 @@ src/lib.rs                  finds `salam` on PATH, runs `salam lsp`
 languages/salam/config.toml language metadata, comments, indentation, brackets
 languages/salam/*.scm       highlights, brackets, outline
 grammar/                    vendored tree-sitter-salam, with generated src/parser.c
+tests/                      sample .salam file and the query check run by CI
 ```
 
 ## Why the grammar is vendored
@@ -65,8 +66,19 @@ npx tree-sitter-cli generate     # or: tree-sitter generate
 ```
 
 `grammar.js`, `keywords.json`, `src/scanner.c` and `src/keywords.h` come from
-upstream unchanged; `src/parser.c`, `src/grammar.json`, `src/node-types.json`
-and `src/tree_sitter/` are generated.
+upstream; `grammar.js` carries one local fix, described in `grammar/UPSTREAM.md`.
+`src/parser.c`, `src/grammar.json`, `src/node-types.json` and `src/tree_sitter/`
+are generated.
+
+Then run the query check:
+
+```sh
+sh tests/check-queries.sh
+```
+
+It parses `tests/sample.salam` and fails if any query in `languages/salam/`
+stops compiling or matching, so a grammar node rename cannot silently drop
+highlighting.
 
 ## License
 

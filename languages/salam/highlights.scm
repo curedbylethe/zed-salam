@@ -1,7 +1,7 @@
 ; Salam highlights for Zed.
 ; Generated from extensions/tree-sitter-salam/queries/highlights.scm; only the
 ; capture names differ, because Zed does not resolve @character, @module,
-; @number.float, @variable.builtin or @tag.attribute.
+; @number.float, @variable.builtin, @tag.attribute or @namespace.
 
 (line_comment) @comment
 (block_comment) @comment
@@ -20,10 +20,10 @@
 
 (meta) @attribute
 
-(import_declaration path: (import_path) @namespace)
-(import_declaration alias: (name) @namespace)
-(include_declaration alias: (name) @namespace)
-(package_declaration name: (dotted_name) @namespace)
+(import_declaration path: (import_path) @type)
+(import_declaration alias: (name) @type)
+(include_declaration alias: (name) @type)
+(package_declaration name: (dotted_name) @type)
 
 (function_definition name: (name) @function)
 (function_definition name: (operator_name) @operator)

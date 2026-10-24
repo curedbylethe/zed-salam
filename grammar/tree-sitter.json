@@ -5,8 +5,7 @@
       "camelcase": "Salam",
       "scope": "source.salam",
       "path": ".",
-      "file-types": ["salam"],
-      "highlights": "queries/highlights.scm"
+      "file-types": ["salam"]
     }
   ],
   "metadata": {

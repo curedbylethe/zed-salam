@@ -11,5 +11,4 @@
 
 (enum_member name: (name) @name) @item
 (field_declaration name: (name) @name) @item
-(const_declaration name: (name) @name) @item
-(variable_declaration name: (name) @name) @item
+(global_declaration name: (name) @name) @item

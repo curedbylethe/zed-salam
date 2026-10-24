@@ -1,0 +1,10 @@
+name: check
+
+on: [push, pull_request]
+
+jobs:
+  queries:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: sh tests/check-queries.sh

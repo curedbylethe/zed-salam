@@ -1,0 +1,55 @@
+// Sample parsed and queried by tests/check-queries.sh. Everything here is
+// matched by a query in languages/salam/, so a grammar bump that renames or
+// reshapes a node fails the check instead of silently dropping highlighting.
+
+package demo.app
+
+import os
+import str as text
+include extra "extra.salam"
+
+MAX: int = 100
+
+struct Point:
+    x: float = 0.0
+    y: float = 0.0
+end
+
+enum Color:
+    red,
+    green,
+end
+
+interface Shape:
+    func area(): float
+end
+
+type Meters = float
+
+// A type may own methods; this branch and the plain alias above must both parse.
+type Weight: float
+    func value: float:
+        ret this as float
+    end
+end
+
+func add(a: int, b: int): int:
+    mut total := a + b
+    if total > MAX:
+        ret MAX
+    else:
+        ret total
+    end
+end
+
+func main:
+    mut names := ["a", "b"]
+    mut ready := true
+    each n in names:
+        println text.Upper(n)
+    end
+    repeat 3 by 2 in i:
+        println i
+    end
+    ret 0
+end

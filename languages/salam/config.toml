@@ -13,7 +13,7 @@ collapsed_placeholder = "/* ... */"
 # parent node), so indentation is driven by these line patterns, which also
 # keep working while the block is still being typed.
 increase_indent_pattern = ":\\s*(//.*)?$"
-decrease_indent_pattern = "^\\s*(end|پایان)\\b"
+decrease_indent_pattern = "^\\s*(end|پایان|else|وگرنه)\\b"
 
 brackets = [
     { start = "{", end = "}", close = true, newline = true },
