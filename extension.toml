@@ -8,7 +8,7 @@ repository = "https://github.com/curedbylethe/zed-salam"
 
 [grammars.salam]
 repository = "https://github.com/curedbylethe/zed-salam"
-rev = "a8ffca024740a3e7a5eed4fddf107a312eea4dd7"
+rev = "872726022372c218ac2a27b7d95cc902bd51d00a"
 path = "grammar"
 
 [language_servers.salam]
