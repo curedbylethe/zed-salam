@@ -1,0 +1,52 @@
+==================
+Type alias followed by a function
+==================
+
+type Foo = Bar
+
+func f(): int:
+    ret 1
+end
+
+---
+
+(source_file
+  (type_alias
+    (name)
+    (type_name
+      (dotted_name
+        (name))))
+  (function_definition
+    (name)
+    (parameter_list)
+    (type_name
+      (dotted_name
+        (name)))
+    (return_statement
+      (integer))))
+
+==================
+Type alias with method body
+==================
+
+type Meters: int
+    func km: f64:
+        ret 1.0
+    end
+end
+
+---
+
+(source_file
+  (type_alias
+    (name)
+    (type_name
+      (dotted_name
+        (name)))
+    (function_definition
+      (name)
+      (type_name
+        (dotted_name
+          (name)))
+      (return_statement
+        (float)))))
